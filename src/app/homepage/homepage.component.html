@@ -1,0 +1,35 @@
+<div class="container mt-4">
+  <h1>Hello!</h1>
+  <p class="text-success">Congratulations! You are logged in. 🎉</p>
+  <p class="text-success">Your roles: {{roles}}</p>
+    <tr>
+        <button class="btn btn-primary mb-3" (click)="logout()">Logout</button>
+        <th></th>
+        <button class="btn btn-primary mb-3" (click)="loadData()">Load Employee Data</button>
+    </tr>
+
+  <table *ngIf="dataLoaded" class="table table-bordered table-striped">
+    <thead class="table-dark">
+      <tr>
+        <th>ID</th>
+        <th>Name</th>
+        <th>Last Name</th>
+        <th>Salary</th>
+        <th *kaHasRoles="['admin'] resource:'ems-client' checkRealm:true">Action</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let employee of employees">
+        <td>{{ employee.id }}</td>
+        <td>{{ employee.name }}</td>
+        <td>{{ employee.lastname }}</td>
+        <td>{{ employee.salary | currency }}</td>
+        <td *kaHasRoles="['admin'] resource:'ems-client' checkRealm:true">
+          <button class="btn btn-danger btn-sm" (click)="delete(employee.id)">
+            Delete
+          </button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>
