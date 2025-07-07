@@ -6,7 +6,13 @@
         <button class="btn btn-primary mb-3" (click)="logout()">Logout</button>
         <th></th>
         <button class="btn btn-primary mb-3" (click)="loadData()">Load Employee Data</button>
+        
+
     </tr>
+    <div class="form-group">
+            <label for="salaryInput">Enter Salary to Filter:</label>
+            <p><input type="text" id="amount" name="ammount" #amount /></p>        </div>
+        <button class="btn btn-primary mb-3" (click)="loadFilteredData(amount.value)">Load Employee Data</button>
 
   <table *ngIf="dataLoaded" class="table table-bordered table-striped">
     <thead class="table-dark">

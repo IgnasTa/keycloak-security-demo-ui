@@ -14,6 +14,9 @@ export class EmployeeService {
   getEmployees(): Observable<Employee[]> {
     return this.http.get<Employee[]>(this.apiUrl);
   }
+  getEmployeesFiltered(filter: any): Observable<Employee[]> {
+    return this.http.get<Employee[]>(`${this.apiUrl}?salary=${filter}`);
+  }
 
   deleteEmployee(id: number): Observable<void> {
     return this.http.delete<void>(`${this.apiUrl}/${id}`);

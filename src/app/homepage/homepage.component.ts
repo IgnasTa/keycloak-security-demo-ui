@@ -40,6 +40,18 @@ export class HomepageComponent {
     });
   }
 
+  loadFilteredData(filter: any): void { //type any to showcase exception handling in api project.
+    this.employeeService.getEmployeesFiltered(filter).subscribe({
+      next: (data) => {
+        this.employees = data;
+        this.dataLoaded = true;
+      },
+      error: (err) => {
+        console.error('Error loading employees', err);
+      }
+    });
+  }
+
   delete(id: number): void {
   this.employeeService.deleteEmployee(id).subscribe({
     next: () => {
